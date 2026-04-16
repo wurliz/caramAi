@@ -1,0 +1,226 @@
+<style>
+  .gdd{padding:1rem 0;font-size:14px;line-height:1.7;color:var(--color-text-primary)}
+  .gdd-header{border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:1.25rem;margin-bottom:1.5rem}
+  .gdd-title{font-size:22px;font-weight:500;margin:0 0 4px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .pill{font-size:11px;font-weight:500;padding:3px 10px;border-radius:99px;border:.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+  .pill.danger{background:var(--color-background-danger);color:var(--color-text-danger);border-color:var(--color-border-danger)}
+  .pill.info{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info)}
+  .pill.warn{background:var(--color-background-warning);color:var(--color-text-warning);border-color:var(--color-border-warning)}
+  .section{margin-bottom:1.75rem}
+  .section-title{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--color-border-tertiary)}
+  .card{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:10px}
+  .card-title{font-size:13px;font-weight:500;margin-bottom:4px}
+  .card-body{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+  .two-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .three-col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:10px}
+  .loop-step{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px;display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+  .loop-num{font-size:11px;font-weight:500;color:var(--color-text-tertiary);min-width:18px;padding-top:2px}
+  .loop-text{font-size:13px;line-height:1.5}
+  .loop-label{font-weight:500;display:block;margin-bottom:2px}
+  .changed{border-left:2px solid var(--color-border-info);border-radius:0;padding-left:12px}
+  .badge-new{font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;background:var(--color-background-info);color:var(--color-text-info);border:.5px solid var(--color-border-info);vertical-align:middle;margin-left:6px;position:relative;top:-1px}
+  .badge-tbd{font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;background:var(--color-background-warning);color:var(--color-text-warning);border:.5px solid var(--color-border-warning);vertical-align:middle;margin-left:6px;position:relative;top:-1px}
+  .badge-removed{font-size:10px;font-weight:500;padding:2px 7px;border-radius:99px;background:var(--color-background-danger);color:var(--color-text-danger);border:.5px solid var(--color-border-danger);vertical-align:middle;margin-left:6px;position:relative;top:-1px}
+  .risk-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:.5px solid var(--color-border-tertiary);font-size:13px}
+  .risk-row:last-child{border-bottom:none}
+  .risk-label{min-width:130px;font-weight:500}
+  .risk-body{color:var(--color-text-secondary);flex:1}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px}
+  .stat-label{font-size:11px;color:var(--color-text-tertiary);margin-bottom:4px}
+  .stat-val{font-size:18px;font-weight:500}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:.5px solid var(--color-border-tertiary)}
+  blockquote{border-left:2px solid var(--color-border-secondary);margin:0 0 1rem;padding:8px 14px;font-size:13px;color:var(--color-text-secondary);font-family:var(--font-serif);border-radius:0}
+  .strikethrough{text-decoration:line-through;opacity:.45}
+  .tech-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);border:.5px solid var(--color-border-secondary);color:var(--color-text-secondary);margin:2px 3px 2px 0}
+</style>
+
+<div class="gdd">
+  <div class="gdd-header">
+    <p class="gdd-title">Hot Seat — Game Design Document</p>
+    <p style="font-size:13px;color:var(--color-text-tertiary);margin:0 0 10px">v0.2 — Updated design direction</p>
+    <div class="meta-row">
+      <span class="pill info">3D Simulator · PC</span>
+      <span class="pill">2 devs · part-time</span>
+      <span class="pill warn">Passion project</span>
+      <span class="pill danger">AI-powered NPC</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Player fantasy</div>
+    <blockquote>A hostage negotiator who unravels the fractured psychology of a desperate individual — one careful word at a time — while piecing together the truth from the evidence strewn around them.</blockquote>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Core mechanics</div>
+    <div class="loop-step">
+      <span class="loop-num">1</span>
+      <div class="loop-text"><span class="loop-label">Investigate</span>Player freely looks around a crime-scene-style room using mouse/WASD. Objects are highlighted on hover. Clicking an object adds a clue to the player's dossier.</div>
+    </div>
+    <div class="loop-step changed">
+      <span class="loop-num">2</span>
+      <div class="loop-text"><span class="loop-label">Speak <span class="badge-new">updated</span></span>Player speaks with their actual voice via microphone. Speech is transcribed and fed to the AI character. A phone/radio UI renders the interaction, with the hostage taker visible via in-world CCTV feed or video call. The player is talking to a person they can see, not a disembodied voice.</div>
+    </div>
+    <div class="loop-step changed">
+      <span class="loop-num">3</span>
+      <div class="loop-text"><span class="loop-label">Read the room <span class="badge-new">updated</span></span>Tension is not shown as a meter — the hostage taker's behaviour, voice, and body language are the only feedback. Lighting, ambient sound, and the character's posture/composure shift as the situation evolves. <em style="color:var(--color-text-tertiary);font-size:12px">Note: a numeric tension meter will be included in v1 and removed once environmental feedback feels sufficient.</em></div>
+    </div>
+    <div class="loop-step changed">
+      <span class="loop-num">4</span>
+      <div class="loop-text"><span class="loop-label">Unlock context <span class="badge-new">updated</span></span>Clue discovery and conversation progress both contribute equally to opening new dialogue directions. Clues don't gate specific topics — instead they enrich what you know and what the AI can plausibly react to. If the player talks their way into a subject without finding the physical evidence, that's valid. Finding evidence deepens the angle but doesn't block entry to it.</div>
+    </div>
+    <div class="loop-step">
+      <span class="loop-num">5</span>
+      <div class="loop-text"><span class="loop-label">Resolve</span>Situation ends in one of several outcomes determined by accumulated tension, clues unlocked, and key conversational moments — not a single binary choice.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Win / lose conditions <span class="badge-new">updated</span></div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--color-text-success)">De-escalation (win)</div>
+        <div class="card-body">Tension falls below threshold and player has built enough rapport or context to offer a credible "out." Hostage taker stands down. Hostages released unharmed.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--color-text-danger)">Escalation (lose)</div>
+        <div class="card-body">Tension maxes out. Hostage taker becomes unreachable. Scene ends badly. Player gets a brief post-mortem showing which moments tipped the balance.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--color-text-warning)">Stalemate (partial) <span class="badge-tbd">under review</span></div>
+        <div class="card-body">Time limit reached with tension mid-range. SWAT called in. Morally ambiguous outcome. Feasibility TBD — may be cut or folded into the escalation path.</div>
+      </div>
+      <div class="card" style="opacity:.45">
+        <div class="card-title"><span class="strikethrough">Breakthrough (removed)</span> <span class="badge-removed">cut</span></div>
+        <div class="card-body strikethrough">Player uncovers the root cause and addresses it directly. Rare — requires finding specific evidence chain.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">De-escalation progress — 50/50 model <span class="badge-new">new</span></div>
+    <div class="card changed">
+      <div class="card-title">Two equal pillars</div>
+      <div class="card-body">Progress toward de-escalation is split evenly between physical evidence gathered and the quality of the ongoing conversation. A player who finds every clue but handles the dialogue badly will stall. A player who reads the person well and speaks carefully can make real ground without touching half the evidence. Neither path is more "correct" — the game rewards both investigative and interpersonal skill equally.</div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Evidence strand</div>
+        <div class="card-body">Clues gathered, documents read, objects examined. Each one enriches the AI's context and unlocks new things the player plausibly knows — but never hard-gates a topic from being raised in conversation.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Conversation strand</div>
+        <div class="card-body">Tone, pacing, empathy signals, avoiding triggers, catching contradictions. The AI tracks what's been said and responds to how the player handles each exchange — not just what topics they raise.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Voice input & CCTV interface <span class="badge-new">new</span></div>
+    <div class="card changed">
+      <div class="card-title">Speaking with your actual voice</div>
+      <div class="card-body">Player uses their microphone to speak. Audio is transcribed in real time (browser STT or server-side), then passed to the AI as the player's turn. Silence, hesitation, and tone are not currently modelled — the transcript is the signal. Fallback: text input remains available for accessibility or hardware limits.</div>
+    </div>
+    <div class="card changed">
+      <div class="card-title">Seeing the hostage taker</div>
+      <div class="card-body">The hostage taker is visible via a diegetic CCTV monitor or video call screen embedded in the 3D room. Their animated state — posture, pacing, composure — reflects the underlying tension level. This makes the negotiation feel like talking to a real, present person rather than a phone voice in a void.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">AI stack — tech under evaluation <span class="badge-new">updated</span></div>
+    <div class="card changed">
+      <div class="card-title">Character AI / conversation</div>
+      <div class="card-body" style="margin-bottom:8px">Primary candidate: Inworld (purpose-built character AI with persistent state, emotional modelling, and game SDK). Fallback LLMs under evaluation:</div>
+      <div style="margin-bottom:4px">
+        <span class="tech-tag">GLM (Zhipu)</span>
+        <span class="tech-tag">DeepSeek</span>
+        <span class="tech-tag">Kimi k2</span>
+        <span class="tech-tag">Qwen</span>
+      </div>
+      <div class="card-body" style="margin-top:8px">Selection criteria: believable in-character tone, short-response quality, per-session cost, and latency. Will prototype each against the same scenario and evaluate subjectively.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Voice synthesis</div>
+      <div class="card-body">ElevenLabs for the hostage taker's voice output. Emotionally reactive voice parameters to be explored.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Clue discovery — organic approach <span class="badge-new">updated</span></div>
+    <div class="card changed">
+      <div class="card-body">
+        Clues don't sit behind locked conversational doors. Instead they operate as context enrichment — finding one makes the AI more believable when that topic arises, and may shift how the hostage taker reacts if the player demonstrates specific knowledge. The goal is that players feel smart for investigating, not that they feel blocked for not having done so.
+        <br><br>
+        <strong style="font-weight:500">How it works in practice:</strong> The AI's context block is updated as clues are found. If the player mentions something the character wouldn't expect them to know (because they found evidence), the AI reacts with surprise, fear, or changed strategy. If the player raises a topic without the evidence, the AI responds to their words at face value — they're not shut out, but they lack the "I know your secret" leverage.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Engagement strategy</div>
+    <div class="card">
+      <div class="card-body">
+        <strong style="font-weight:500">Nudge system:</strong> If no new evidence is examined for 90 seconds, a subtle environmental cue draws attention (object glints, phone crackles with a hint). Non-diegetic hints available as opt-in.
+        <br><br>
+        <strong style="font-weight:500">AI as compass:</strong> The hostage taker is prompted to occasionally drop emotional breadcrumbs — references to names, places, grievances — that point toward relevant evidence without stating it.
+        <br><br>
+        <strong style="font-weight:500">Soft time pressure:</strong> A loose in-game clock on the wall adds dread without a hard countdown game-over.
+        <br><br>
+        <strong style="font-weight:500">Replayability:</strong> Because responses are generative, each conversation is unique even in the same scenario.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Art direction</div>
+    <div class="card">
+      <div class="card-title">Cel-shaded neo-noir — "living graphic novel"</div>
+      <div class="card-body">High-contrast chiaroscuro lighting. Neon cyan, magenta, amber against near-black environments. Heavy ink outline on all geometry. 1980s urban decay — peeling wallpaper, flickering fluorescents, rain-streaked glass. The room should feel like a panel from a Frank Miller comic that the player can walk around inside.</div>
+    </div>
+    <div class="two-col" style="margin-top:8px">
+      <div class="card">
+        <div class="card-title">UI language</div>
+        <div class="card-body">CCTV/video call rendered as a physical in-world screen. Dossier is a literal folder on the desk. Tension expressed through environment: lighting reddens, audio crackles more, rain intensifies.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Audio direction</div>
+        <div class="card-body">ElevenLabs voice for the hostage taker. Ambient: rain, distant sirens, muffled crowd. Score: minimalist jazz-influenced tension underscore reacting to conversation state.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Scope — proof of concept deliverables</div>
+    <div class="three-col">
+      <div class="stat"><div class="stat-label">Scenarios (v1)</div><div class="stat-val">1–2</div></div>
+      <div class="stat"><div class="stat-label">Rooms</div><div class="stat-val">1 per scenario</div></div>
+      <div class="stat"><div class="stat-label">AI characters</div><div class="stat-val">1 per scenario</div></div>
+    </div>
+    <div class="card" style="margin-top:10px">
+      <div class="card-title">Won't have (v1)</div>
+      <div class="card-body">Multiplayer, procedural scenario generation, full voice acting, console ports, achievements system, modding support.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Risks</div>
+    <div class="card">
+      <div class="risk-row"><span class="risk-label">AI reliability</span><span class="risk-body">Model may break character or give nonsensical responses. Mitigation: robust system prompt, fallback canned responses for failure states, low temperature.</span></div>
+      <div class="risk-row"><span class="risk-label">Voice input latency</span><span class="risk-body">STT + AI inference + TTS chain may feel sluggish. Mitigation: stream AI response into ElevenLabs as it generates; show CCTV character "thinking" animation during latency gap.</span></div>
+      <div class="risk-row"><span class="risk-label">API cost</span><span class="risk-body">Monitor token usage per session across the full voice pipeline. Evaluate cheaper model options first. Set a session cap with graceful degradation.</span></div>
+      <div class="risk-row"><span class="risk-label">No tension meter (post-v1)</span><span class="risk-body">Environmental feedback must clearly communicate state once the meter is removed. Risk of player confusion. Mitigation: extensive playtesting before cutting the meter.</span></div>
+      <div class="risk-row"><span class="risk-label">Player engagement</span><span class="risk-body">Conversation fatigue if character feels repetitive. Mitigation: rich persona, varied emotional states, environmental storytelling carrying equal weight.</span></div>
+      <div class="risk-row"><span class="risk-label">Scope creep</span><span class="risk-body">Two-person part-time team. Strict Must Have discipline — ship one great scenario before expanding.</span></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button onclick="sendPrompt('Build an agile backlog with epics and user stories for Hot Seat v0.2 based on the updated GDD')">Generate backlog ↗</button>
+    <button onclick="sendPrompt('Write a system prompt for the Hot Seat AI hostage taker character')">Write AI character prompt ↗</button>
+    <button onclick="sendPrompt('Compare Inworld, DeepSeek, Kimi k2, GLM and Qwen for the Hot Seat AI hostage taker use case')">Compare AI options ↗</button>
+    <button onclick="sendPrompt('Design the voice pipeline architecture for Hot Seat — STT, AI, TTS latency chain')">Voice pipeline design ↗</button>
+  </div>
+</div>
